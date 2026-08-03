@@ -1,0 +1,195 @@
+# ===================================================
+#             GETDZIALKI - CONFIGURATION
+# ===================================================
+
+block-type: "NOTE_BLOCK"
+block-name: "&aBlok Działki"
+block-lore:
+  - " &8▶ &7ᴘᴏsᴛᴀᴡ ᴀʙʏ ᴢᴀᴊᴀᴄ ᴅᴀɴʏ ᴏʙsᴢᴀʀ"
+
+hologram-lines:
+  - "&e&lᴅᴢɪᴀʟᴋᴀ"
+  - "&7ᴡʟᴀsᴄɪᴄɪᴇʟ: {owner}"
+  - "&7ᴡɪᴇʟᴋᴏsᴄ: &b{size}x{size}"
+  - "&7ᴄᴢʟᴏɴᴋᴏᴡɪᴇ: &b{players}"
+  - "&8sᴛᴡᴏʀᴢᴏɴᴏ: {created_at}"
+
+economy:
+  size-upgrade-multiplier: 2500.0
+  member-upgrade-multiplier: 5000.0
+
+# ===================================================
+#   WALKA (COMBAT-TAG) I ŚCIANA ZE SZKŁA
+#   Integracja ze StormAntyLogout - jeśli ten plugin jest zainstalowany,
+#   status walki jest sprawdzany również z jego systemu combat-tag.
+#   Jeśli go nie ma, getDzialki korzysta z własnego (poniżej).
+# ===================================================
+combat:
+  enabled: true
+  # Czas (w sekundach) na jaki własny (zapasowy) system combat-tag oznacza
+  # graczy jako "w walce" po trafieniu PvP - używany tylko gdy StormAntyLogout
+  # nie jest zainstalowany na serwerze.
+  self-duration: 15
+
+  glass-wall:
+    # Rozmiar ściany ze szkła (5 = 5x5)
+    size: 5
+    # Materiał z jakiego zbudowana jest ściana
+    material: "GLASS"
+    # Maksymalny czas (w sekundach) po jakim ściana zniknie sama,
+    # nawet jeśli walka jeszcze trwa (bezpiecznik)
+    duration: 8
+
+# ===================================================
+#             RANGI CZŁONKÓW DZIAŁKI
+# ===================================================
+ranks:
+  # Domyślna ranga nadawana nowo dodanemu członkowi
+  default: "CZLONEK"
+  names:
+    CZLONEK: "&7Członek"
+    MENADZER: "&6Menadżer"
+
+# MAKSYMALNE POZIOMY ULEPSZEŃ
+upgrades:
+  max-size-level: 5       # Maksymalny poziom wielkości (Poziom 5 = 16 + 5*4 = 36x36)
+  max-member-level: 4     # Maksymalny poziom limitu członków (Poziom 4 = 2 + 4*2 = 10 członków)
+
+gui:
+  titles:
+    crafting: "&8ᴄʀᴀꜰᴛɪɴɢ ʙʟᴏᴋᴜ ᴅᴢɪᴀʟᴋɪ"
+    settings: "&8ᴜꜱᴛᴀᴡɪᴇɴɪᴀ ᴅᴢɪᴀʟᴋɪ"
+    upgrade: "&8ᴜʟᴇᴘꜱᴢ ᴅᴢɪᴀʟᴋᴇ"
+    confirm: "&cᴘᴏᴛᴡɪᴇʀᴅᴢ ᴜsᴜɴɪᴇᴄɪᴇ"
+    panel: "&8Panel Działki"
+    members: "&8Członkowie"
+
+  settings-layout:
+    size: 27
+    filler:
+      item: "GRAY_STAINED_GLASS_PANE"
+      name: " "
+    slots:
+      fall: 10
+      fire: 11
+      explode: 12
+      pvp: 13
+      liquids: 14
+      border: 16
+
+  upgrade-layout:
+    size: 27
+    filler:
+      item: "GRAY_STAINED_GLASS_PANE"
+      name: " "
+    slots:
+      size-upgrade: 11
+      member-upgrade: 15
+
+  confirm-layout:
+    size: 27
+    filler:
+      item: "GRAY_STAINED_GLASS_PANE"
+      name: " "
+    slots:
+      accept: 11
+      cancel: 15
+
+  crafting:
+    filler:
+      item: "GRAY_STAINED_GLASS_PANE"
+      name: " "
+
+  settings:
+    fall:
+      item: "FEATHER"
+      name: "&7&lᴏʙʀᴀᴢᴇɴɪᴀ ᴏᴅ ᴜᴘᴀᴅᴋᴜ"
+      lore:
+        - "&8▶ &7Status: {status}"
+        - ""
+        - "&eKliknij, aby zmienić ustawienie!"
+    fire:
+      item: "FLINT_AND_STEEL"
+      name: "&7&lᴏʙʀᴀᴢᴇɴɪᴀ ᴏᴅ ᴏɢɴɪᴀ"
+      lore:
+        - "&8▶ &7Status: {status}"
+        - ""
+        - "&eKliknij, aby zmienić ustawienie!"
+    explode:
+      item: "TNT"
+      name: "&7&lᴅᴢɪᴀʟᴋᴀɴɪᴇ ᴡʏʙᴜᴄʜᴏᴡ"
+      lore:
+        - "&8▶ &7Status: {status}"
+        - ""
+        - "&eKliknij, aby zmienić ustawienie!"
+    pvp:
+      item: "DIAMOND_SWORD"
+      name: "&7&lᴅᴢɪᴀʟᴀɴɪᴇ ᴘᴠᴘ"
+      lore:
+        - "&8▶ &7Status: {status}"
+        - ""
+        - "&eKliknij, aby zmienić ustawienie!"
+    liquids:
+      item: "LAVA_BUCKET"
+      name: "&7&lʀᴏᴢʟᴇᴡᴀɴɪᴇ ᴘʟʏɴᴏᴡ"
+      lore:
+        - "&8▶ &7Status: {status}"
+        - ""
+        - "&7Określa czy woda i lawa"
+        - "&7mogą wpływać na teren."
+        - ""
+        - "&eKliknij, aby zmienić ustawienie!"
+    border:
+      item: "EMERALD"
+      name: "&7&lᴡɪᴢᴜᴀʟɪᴢᴀᴄᴊᴀ ɢʀᴀɴɪᴄ"
+      lore:
+        - "&8▶ &7Kliknij tutaj, aby podświetlić"
+        - "&8▶ &7aktualne border działki"
+        - "&8▶ &7za pomocą cząsteczek."
+        - ""
+        - "&eKliknij, aby zobaczyć!"
+
+  size-upgrade:
+    item: "BEACON"
+    name: "&7&lᴜʟᴇᴘsᴢᴇɴɪᴇ ᴡɪᴇʟᴋᴏsᴄɪ ᴅᴢɪᴀʟᴋɪ"
+    lore:
+      - "&8▶ &7Aktualna wielkość: &e{current_size}x{current_size}"
+      - "&8▶ &7Następna wielkość: &a{next_size}x{next_size}"
+      - ""
+      - "&8▶ &7Koszt ulepszenia: &6{cost}$"
+      - ""
+      - "&8▶ &7Kliknij, aby zakupić ulepszenie!"
+    max-lore:
+      - "&8▶ &7Aktualna wielkość: &e{current_size}x{current_size}"
+      - ""
+      - "&8▶ &cOsiągnięto maksymalny poziom wielkości!"
+
+  member-upgrade:
+    item: "PLAYER_HEAD"
+    name: "&7&lᴜʟᴇᴘsᴢ ʟɪᴍɪᴛ ᴄᴢʟᴏɴᴋᴏᴡ"
+    lore:
+      - "&8▶ &7Aktualny limit: &e{current_limit} graczy"
+      - "&8▶ &7Następny limit: &a{next_limit} graczy"
+      - ""
+      - "&8▶ &7Koszt ulepszenia: &6{cost}$"
+      - ""
+      - "&eKliknij, aby powiększyć limit!"
+    max-lore:
+      - "&8▶ &7Aktualny limit: &e{current_limit} graczy"
+      - ""
+      - "&8▶ &cOsiągnięto maksymalny limit członków!"
+
+  confirm:
+    accept:
+      item: "LIME_WOOL"
+      name: "&7&lᴘᴏᴛᴡɪᴇʀᴅᴢᴇɴɪᴇ ᴜsᴜɴɪᴇᴄɪᴀ ᴅᴢɪᴀʟᴋɪ"
+      lore:
+        - "&8▶ &7Kliknięcie spowoduje nieodwracalne"
+        - "&8▶ &7usunięcie tej działki i usuniecie"
+        - "&8▶ &7jej zabezpieczeń na tym terenie."
+    cancel:
+      item: "RED_WOOL"
+      name: "&7&lᴀɴᴜʟᴜᴊ ᴜsᴜɴɪᴇᴄɪᴇ"
+      lore:
+        - "&8▶ &7Zamknij to menu i zachowaj"
+        - "&8▶ &7swoją działkę nienaruszoną."
