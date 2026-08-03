@@ -1,30 +1,26 @@
 name: getDzialki
-version: '1.0.0'
+version: '2.0'
 main: pl.bananek355.getDzialki.GetDzialkiPlugin
 api-version: '1.20'
-authors: [bananek355]
-description: Plugin do zarządzania działkami gracza.
+author: bananek355
+description: Plugin działek z panelem, rangami członków (Menadżer/Członek) i integracją ze STORMANTYLOGOUT
 
-depend:
-  - WorldGuard
-  - Vault
-
-softdepend:
-  - StormAntyLogout
+# WAŻNE: softdepend (nie depend!) - dzięki temu getDzialki działa normalnie nawet jeśli
+# STORMANTYLOGOUT nie jest zainstalowany (integracja combat-glasswall po prostu się nie włączy).
+# Jeśli JEST zainstalowany, wpisanie go tutaj gwarantuje że załaduje się PRZED getDzialki,
+# więc StormAntiLogout.getInstance() nigdy nie będzie null w momencie startu naszego pluginu.
+softdepend: [STORMANTYLOGOUT, Vault, WorldGuard]
 
 commands:
   dzialka:
-    description: Główna komenda działki
-    usage: /dzialka <home|settings|upgrade|member|usun>
-    aliases: [dz]
+    description: Główna komenda pluginu getDzialki
+    usage: /dzialka <home|crafting|ulepsz|ustawienia|dostep|pomoc>
   getdzialka:
-    description: Komenda administracyjna getDzialki
-    usage: /getdzialka <reload|killholograms>
+    description: Komendy administracyjne getDzialki
+    usage: /getdzialka <reload|killholograms|teleportuj>
+    permission: getdzialki.admin
 
 permissions:
   getdzialki.admin:
-    description: Dostęp do komend administracyjnych getDzialki
+    description: Pełny dostęp administracyjny do wszystkich działek i komend admina
     default: op
-  getdzialki.use:
-    description: Pozwala na używanie działek
-    default: true

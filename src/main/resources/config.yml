@@ -18,51 +18,35 @@ economy:
   size-upgrade-multiplier: 2500.0
   member-upgrade-multiplier: 5000.0
 
-# ===================================================
-#   WALKA (COMBAT-TAG) I ŚCIANA ZE SZKŁA
-#   Integracja ze StormAntyLogout - jeśli ten plugin jest zainstalowany,
-#   status walki jest sprawdzany również z jego systemu combat-tag.
-#   Jeśli go nie ma, getDzialki korzysta z własnego (poniżej).
-# ===================================================
-combat:
-  enabled: true
-  # Czas (w sekundach) na jaki własny (zapasowy) system combat-tag oznacza
-  # graczy jako "w walce" po trafieniu PvP - używany tylko gdy StormAntyLogout
-  # nie jest zainstalowany na serwerze.
-  self-duration: 15
-
-  glass-wall:
-    # Rozmiar ściany ze szkła (5 = 5x5)
-    size: 5
-    # Materiał z jakiego zbudowana jest ściana
-    material: "GLASS"
-    # Maksymalny czas (w sekundach) po jakim ściana zniknie sama,
-    # nawet jeśli walka jeszcze trwa (bezpiecznik)
-    duration: 8
-
-# ===================================================
-#             RANGI CZŁONKÓW DZIAŁKI
-# ===================================================
-ranks:
-  # Domyślna ranga nadawana nowo dodanemu członkowi
-  default: "CZLONEK"
-  names:
-    CZLONEK: "&7Członek"
-    MENADZER: "&6Menadżer"
-
 # MAKSYMALNE POZIOMY ULEPSZEŃ
 upgrades:
   max-size-level: 5       # Maksymalny poziom wielkości (Poziom 5 = 16 + 5*4 = 36x36)
   max-member-level: 4     # Maksymalny poziom limitu członków (Poziom 4 = 2 + 4*2 = 10 członków)
 
+# ===================================================
+#     INTEGRACJA ZE STORMANTYLOGOUT (ochrona walki)
+# ===================================================
+# Jeśli gracz jest w trakcie walki PvP (stan "antylogout" wg pluginu STORMANTYLOGOUT)
+# i spróbuje wbiec na cudzą działkę (na której nie jest właścicielem/członkiem), zostanie
+# cofnięty, a przed nim postawiona zostanie fałszywa (widoczna tylko dla niego) ściana ze
+# szkła blokująca dalsze wejście - dokładnie tak jak robi to Storm na swoich regionach.
+# Wymaga zainstalowanego i włączonego pluginu STORMANTYLOGOUT - jeśli go nie ma na serwerze,
+# ta sekcja jest po prostu ignorowana (integracja się nie włączy, reszta pluginu działa normalnie).
+combat-protection:
+  enabled: true
+  glass-wall:
+    material: "GLASS"
+    size: 5                  # bok kwadratu ściany (bloki)
+    duration-seconds: 10     # po ilu sekundach ściana zniknie sama, jeśli gracz przestanie próbować wejść
+
 gui:
   titles:
     crafting: "&8ᴄʀᴀꜰᴛɪɴɢ ʙʟᴏᴋᴜ ᴅᴢɪᴀʟᴋɪ"
-    settings: "&8ᴜꜱᴛᴀᴡɪᴇɴɪᴀ ᴅᴢɪᴀʟᴋɪ"
-    upgrade: "&8ᴜʟᴇᴘꜱᴢ ᴅᴢɪᴀʟᴋᴇ"
+    settings: "&8ᴜꜱᴛᴀᴡɪᴇɴɪᴀ ᴅᴢɪᴀʛᴋɪ"
+    upgrade: "&8ᴜʟᴇᴘꜱᴢ ᴅᴢɪᴀʛᴋᴇ"
     confirm: "&cᴘᴏᴛᴡɪᴇʀᴅᴢ ᴜsᴜɴɪᴇᴄɪᴇ"
     panel: "&8Panel Działki"
-    members: "&8Członkowie"
+    members: "&8ᴄᴢʟᴏɴᴋᴏᴡɪᴇ ᴅᴢɪᴀʛᴋɪ"
 
   settings-layout:
     size: 27
@@ -95,6 +79,61 @@ gui:
       accept: 11
       cancel: 15
 
+  # ===================================================
+  #     PANEL DZIAŁKI - GUI TYPU HOPPER (5 SLOTÓW)
+  # ===================================================
+  # Otwierany prawoklikiem na blok działki przez właściciela, menadżera lub admina.
+  # Sloty w hopperze są numerowane 0-4 (od lewej do prawej).
+  panel-layout:
+    slots:
+      members: 0
+      settings: 2
+      upgrade: 4
+    members-icon:
+      # Jeśli zostawisz "texture" puste, użyta zostanie zwykła głowa z item (domyślnie PLAYER_HEAD).
+      item: "PLAYER_HEAD"
+      texture: ""
+      name: "&e&lCzłonkowie"
+      lore:
+        - "&8▶ &7Zarządzaj członkami działki"
+        - "&8▶ &7(dodawaj, usuwaj, zmieniaj rangi)"
+        - ""
+        - "&eKliknij, aby otworzyć!"
+    settings-icon:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWMyZmYyNDRkZmM5ZGQzYTJjZWY2MzExMmU3NTAyZGM2MzY3YjBkMDIxMzI5NTAzNDdiMmI0NzlhNzIzNjZkZCJ9fX0="
+      name: "&e&lUstawienia"
+      lore:
+        - "&8▶ &7Otwiera ustawienia działki"
+        - "&8▶ &7(upadek, ogień, wybuchy, pvp, płyny)"
+        - ""
+        - "&eKliknij, aby otworzyć!"
+    upgrade-icon:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGM4OGJmMDVhOWE4N2YyZjJmNDNjYmZiNzgwMTQ3YTRhNDRjZjRkNTVjZTAxMWY3N2M4MWUwMDhlMmMwN2VmMCJ9fX0="
+      name: "&e&lUlepszenia"
+      lore:
+        - "&8▶ &7Otwiera ulepszenia działki"
+        - "&8▶ &7(wielkość, limit członków)"
+        - ""
+        - "&eKliknij, aby otworzyć!"
+
+  # ===================================================
+  #     GUI CZŁONKOWIE - 54 SLOTY (GŁOWY GRACZY)
+  # ===================================================
+  members-layout:
+    size: 54
+    filler:
+      item: "GRAY_STAINED_GLASS_PANE"
+      name: " "
+    # {rank} i {player} zostaną podmienione automatycznie
+    member-lore:
+      - "&8▶ &7Ranga: {rank}"
+      - ""
+      - "&eKliknij PRAWYM, aby zmienić rangę!"
+      - "&cKliknij LEWYM, aby usunąć jako członka!"
+    rank-names:
+      CZLONEK: "&7Członek"
+      MENADZER: "&6&lMenadżer"
+
   crafting:
     filler:
       item: "GRAY_STAINED_GLASS_PANE"
@@ -117,14 +156,14 @@ gui:
         - "&eKliknij, aby zmienić ustawienie!"
     explode:
       item: "TNT"
-      name: "&7&lᴅᴢɪᴀʟᴋᴀɴɪᴇ ᴡʏʙᴜᴄʜᴏᴡ"
+      name: "&7&lᴅᴢɪᴀʛᴋᴀɴɪᴇ ᴡʏʙᴜᴄʜᴏᴡ"
       lore:
         - "&8▶ &7Status: {status}"
         - ""
         - "&eKliknij, aby zmienić ustawienie!"
     pvp:
       item: "DIAMOND_SWORD"
-      name: "&7&lᴅᴢɪᴀʟᴀɴɪᴇ ᴘᴠᴘ"
+      name: "&7&lᴅᴢɪᴀʛᴀɴɪᴇ ᴘᴠᴘ"
       lore:
         - "&8▶ &7Status: {status}"
         - ""
@@ -151,7 +190,7 @@ gui:
 
   size-upgrade:
     item: "BEACON"
-    name: "&7&lᴜʟᴇᴘsᴢᴇɴɪᴇ ᴡɪᴇʟᴋᴏsᴄɪ ᴅᴢɪᴀʟᴋɪ"
+    name: "&7&lᴜʟᴇᴘsᴢᴇɴɪᴇ ᴡɪᴇʟᴋᴏsᴄɪ ᴅᴢɪᴀʛᴋɪ"
     lore:
       - "&8▶ &7Aktualna wielkość: &e{current_size}x{current_size}"
       - "&8▶ &7Następna wielkość: &a{next_size}x{next_size}"
@@ -182,7 +221,7 @@ gui:
   confirm:
     accept:
       item: "LIME_WOOL"
-      name: "&7&lᴘᴏᴛᴡɪᴇʀᴅᴢᴇɴɪᴇ ᴜsᴜɴɪᴇᴄɪᴀ ᴅᴢɪᴀʟᴋɪ"
+      name: "&7&lᴘᴏᴛᴡɪᴇʀᴅᴢᴇɴɪᴇ ᴜsᴜɴɪᴇᴄɪᴀ ᴅᴢɪᴀʛᴋɪ"
       lore:
         - "&8▶ &7Kliknięcie spowoduje nieodwracalne"
         - "&8▶ &7usunięcie tej działki i usuniecie"

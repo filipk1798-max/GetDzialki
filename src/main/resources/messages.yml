@@ -1,23 +1,44 @@
-# ===================================================
-#           GETDZIALKI - MESSAGES
-# ===================================================
-prefix: "&8[&aDzialki&8] &r"
+prefix: "&7[&aDziałka&7] "
+no-permission: "&8▶ &cNie masz uprawnień do tego obszaru!"
+wg-claim-forbidden: "&8▶ &cNie możesz postawić działki na terenie chronionym przez WorldGuard!"
+plot-overlap: "&8▶ &cTen obszar nakłada się na inną działkę!"
+dzialka-created: "&8▶ &aPomyślnie utworzono działkę! (Rozmiar: 16x16)"
+dzialka-removed: "&8▶ &cUsunięto działkę. Blok wrócił do Twojego ekwipunku."
+already-has-plot: "&8▶ &cMożesz posiadać tylko jedną działkę!"
+not-owner: "&8▶ &cTylko właściciel lub menadżer działki może to zrobić!"
+player-not-found: "&8▶ &cNie znaleziono podanego gracza."
+member-added: "&8▶ &aDodano gracza %player% do listy zaufanych."
+member-removed: "&8▶ &cUsunięto gracza %player% z listy zaufanych."
+max-level-reached: "&8▶ &cOsiągnąłeś już maksymalny poziom ulepszenia działki (Poziom 5)!"
+no-money: "&8▶ &cNie masz wystarczająco dużo pieniędzy! Potrzebujesz %cost%$."
+plot-upgraded: "&8▶ &aPomyślnie ulepszono działkę do poziomu %level% (Rozmiar: %size%x%size%) za %cost%$!"
+home-teleport: "&8▶ &aPrzeniesiono na swoją działkę!"
+no-plot: "&8▶ &cNie posiadasz żadnej działki!"
+border-shown: "&8▶ &aGranice działki zostały podświetlone cząsteczkami na 3 sekundy!"
+max-members-reached: "&8▶ &cOsiągnąłeś już maksymalny limit członków! Ulepsz działkę w menu."
+members-limit-upgraded: "&8▶ &aPomyślnie zwiększono limit członków do %limit% za %cost%$!"
 
-already-has-plot: "&8[&aDzialki&8] &cJuż posiadasz działkę!"
-wg-claim-forbidden: "&8[&aDzialki&8] &cNie możesz tu postawić działki (teren chroniony)."
-plot-overlap: "&8[&aDzialki&8] &cTeren działki nakłada się na inną działkę!"
-dzialka-created: "&8[&aDzialki&8] &aDziałka została utworzona pomyślnie!"
-dzialka-removed: "&8[&aDzialki&8] &cDziałka została usunięta."
-not-owner: "&8[&aDzialki&8] &cNie jesteś właścicielem tej działki!"
-no-permission: "&8[&aDzialki&8] &cNie masz uprawnień do tej czynności!"
-no-plot: "&8[&aDzialki&8] &cNie posiadasz działki!"
-home-teleport: "&8[&aDzialki&8] &aTeleportowano do działki."
-max-members-reached: "&8[&aDzialki&8] &cOsiągnięto maksymalny limit członków!"
-player-not-found: "&8[&aDzialki&8] &cNie znaleziono gracza o podanej nazwie."
-member-added: "&8[&aDzialki&8] &aDodano gracza &e%player% &ado działki."
-member-removed: "&8[&aDzialki&8] &cUsunięto gracza &e%player% &cz działki."
-no-money: "&8[&aDzialki&8] &cNie masz wystarczająco pieniędzy! Potrzebujesz &e%cost%$&c."
-plot-upgraded: "&8[&aDzialki&8] &aUlepszono działkę do rozmiaru &e{new_size}x{new_size}&a za &6{cost}$&a!"
-members-limit-upgraded: "&8[&aDzialki&8] &aUlepszono limit członków do &e{new_limit}&a za &6{cost}$&a!"
-border-shown: "&8[&aDzialki&8] &aWizualizacja granic działki aktywowana."
-usage: "&8[&aDzialki&8] &7Użycie: &e/dzialka <home|settings|upgrade|member|usun>"
+# Zmiana rangi członka w GUI "Członkowie" (prawy klik na głowę gracza)
+rank-changed: "&7[&aDziałka&7] &8▶ &aZmieniono rangę gracza &e%player% &ana &6%rank%&a!"
+
+# Integracja ze STORMANTYLOGOUT - próba wejścia na cudzą działkę w trakcie walki PvP
+combat-entry-blocked: "&8▶ &cNie możesz wejść na działkę gracza &e%owner% &cw trakcie walki!"
+
+actionbar-enter: "&7Weszłeś na działke gracza &e{owner}!"
+actionbar-exit: "&7Wyszłeś z działki gracza &e{owner}!"
+
+help-line-1: "&2==== &7[&aᴅᴢɪᴀʟᴋɪ&7] &2===="
+help-line-2: "&a/dzialka &2home &8▶ &aTeleportuje cie na dzialke"
+help-line-3: "&a/dzialka &2crafting &8▶ &aPokazuje crafting dzialki"
+help-line-4: "&a/dzialka &2ulepsz &8▶ &aOtwiera ulepszenia dzialki (lub: /dzialka ulepsz [nick] dla menadżera)"
+help-line-5: "&a/dzialka &2ustawienia &8▶ &aOtwiera ustawienia dzialki (lub: /dzialka ustawienia [nick] dla menadżera)"
+help-line-6: "&a/dzialka &2dostep dodaj/usun [nick] &8▶ &aZarządzanie członkami działki"
+
+usage: |-
+  &2==== &7[&aᴅᴢɪᴀʟᴋɪ&7] &2====
+  &a/dzialka &2home &8▶ &aTeleportuje cie na dzialke
+  &a/dzialka &2crafting &8▶ &aPokazuje crafting dzialki
+  &a/dzialka &2ulepsz &8▶ &aOtwiera ulepszenia dzialki
+  &a/dzialka &2ustawienia &8▶ &aOtwiera ustawienia dzialki
+  &a/dzialka &2dostep dodaj/usun [nick] &8▶ &aZarządzanie członkami działki
+  &2==== &7[&aᴅᴢɪᴀʛᴋɪ&7] &2====
