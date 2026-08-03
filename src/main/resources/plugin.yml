@@ -1,0 +1,30 @@
+name: getDzialki
+version: '1.0.0'
+main: pl.bananek355.getDzialki.GetDzialkiPlugin
+api-version: '1.20'
+authors: [bananek355]
+description: Plugin do zarządzania działkami gracza.
+
+depend:
+  - WorldGuard
+  - Vault
+
+softdepend:
+  - StormAntyLogout
+
+commands:
+  dzialka:
+    description: Główna komenda działki
+    usage: /dzialka <home|settings|upgrade|member|usun>
+    aliases: [dz]
+  getdzialka:
+    description: Komenda administracyjna getDzialki
+    usage: /getdzialka <reload|killholograms>
+
+permissions:
+  getdzialki.admin:
+    description: Dostęp do komend administracyjnych getDzialki
+    default: op
+  getdzialki.use:
+    description: Pozwala na używanie działek
+    default: true

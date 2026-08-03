@@ -1,0 +1,23 @@
+# ===================================================
+#           GETDZIALKI - MESSAGES
+# ===================================================
+prefix: "&8[&aDzialki&8] &r"
+
+already-has-plot: "&8[&aDzialki&8] &cJuż posiadasz działkę!"
+wg-claim-forbidden: "&8[&aDzialki&8] &cNie możesz tu postawić działki (teren chroniony)."
+plot-overlap: "&8[&aDzialki&8] &cTeren działki nakłada się na inną działkę!"
+dzialka-created: "&8[&aDzialki&8] &aDziałka została utworzona pomyślnie!"
+dzialka-removed: "&8[&aDzialki&8] &cDziałka została usunięta."
+not-owner: "&8[&aDzialki&8] &cNie jesteś właścicielem tej działki!"
+no-permission: "&8[&aDzialki&8] &cNie masz uprawnień do tej czynności!"
+no-plot: "&8[&aDzialki&8] &cNie posiadasz działki!"
+home-teleport: "&8[&aDzialki&8] &aTeleportowano do działki."
+max-members-reached: "&8[&aDzialki&8] &cOsiągnięto maksymalny limit członków!"
+player-not-found: "&8[&aDzialki&8] &cNie znaleziono gracza o podanej nazwie."
+member-added: "&8[&aDzialki&8] &aDodano gracza &e%player% &ado działki."
+member-removed: "&8[&aDzialki&8] &cUsunięto gracza &e%player% &cz działki."
+no-money: "&8[&aDzialki&8] &cNie masz wystarczająco pieniędzy! Potrzebujesz &e%cost%$&c."
+plot-upgraded: "&8[&aDzialki&8] &aUlepszono działkę do rozmiaru &e{new_size}x{new_size}&a za &6{cost}$&a!"
+members-limit-upgraded: "&8[&aDzialki&8] &aUlepszono limit członków do &e{new_limit}&a za &6{cost}$&a!"
+border-shown: "&8[&aDzialki&8] &aWizualizacja granic działki aktywowana."
+usage: "&8[&aDzialki&8] &7Użycie: &e/dzialka <home|settings|upgrade|member|usun>"
